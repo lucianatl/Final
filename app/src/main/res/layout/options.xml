@@ -11,9 +11,9 @@
 
         <TextView
             android:id="@+id/Side1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_width="156dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
             android:text="Side 1" />
 
         <RadioGroup
@@ -22,29 +22,29 @@
             android:layout_height="wrap_content">
 
             <RadioButton
-                android:id="@+id/radioButton"
+                android:id="@+id/Englishside1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="RadioButton" />
+                android:text="English" />
 
             <RadioButton
-                android:id="@+id/radioButton2"
+                android:id="@+id/CharactersSide1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="RadioButton" />
+                android:text="Characters" />
 
             <RadioButton
-                android:id="@+id/radioButton3"
+                android:id="@+id/PinyinSide1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="RadioButton" />
+                android:text="Pinyin" />
 
         </RadioGroup>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <TextView
@@ -60,22 +60,22 @@
             android:layout_height="wrap_content">
 
             <RadioButton
-                android:id="@+id/radioButton4"
+                android:id="@+id/EnglishSide2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="RadioButton" />
+                android:text="English" />
 
             <RadioButton
-                android:id="@+id/radioButton5"
+                android:id="@+id/CharactersSide2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="RadioButton" />
+                android:text="Characters" />
 
             <RadioButton
-                android:id="@+id/radioButton6"
+                android:id="@+id/PinyinSide2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="RadioButton" />
+                android:text="Pinyin" />
         </RadioGroup>
     </LinearLayout>
 
