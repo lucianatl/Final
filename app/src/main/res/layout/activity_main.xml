@@ -22,95 +22,125 @@
         <TextView
             android:id="@+id/instructions"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:gravity="center"
             android:text="@string/input_your_vocabulary_in_english" />
 
-        <EditText
-            android:id="@+id/vocab1"
+        <TextView
+            android:id="@+id/textView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="english vocab term 1"
-            android:inputType="textPersonName" />
+            android:layout_height="42dp"
+            android:text="how many flashcards do you need"
+            android:textAlignment="center" />
 
-        <EditText
-            android:id="@+id/vocab2"
+        <TableLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="english vocab term 2"
-            android:inputType="textPersonName" />
+            android:layout_height="match_parent">
 
-        <EditText
-            android:id="@+id/vocab3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="english vocab term 3"
-            android:inputType="textPersonName" />
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-        <EditText
-            android:id="@+id/vocab4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="english vocab term 4"
-            android:inputType="textPersonName" />
+                <EditText
+                    android:id="@+id/vocab1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="english vocab term 1"
+                    android:inputType="textPersonName" />
 
-        <EditText
-            android:id="@+id/vocab5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="english vocab term 5"
-            android:inputType="textPersonName" />
+                <Button
+                    android:id="@+id/ok1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ok" />
+            </TableRow>
 
-        <EditText
-            android:id="@+id/vocab6"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="english vocab term 6"
-            android:inputType="textPersonName" />
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-        <EditText
-            android:id="@+id/vocab7"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="english vocab term 7"
-            android:inputType="textPersonName" />
+                <EditText
+                    android:id="@+id/vocab2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="english vocab term 2"
+                    android:inputType="textPersonName" />
 
-        <EditText
-            android:id="@+id/vocab8"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="english vocab term 8"
-            android:inputType="textPersonName" />
+                <Button
+                    android:id="@+id/ok2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ok" />
+            </TableRow>
 
-        <EditText
-            android:id="@+id/vocab9"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="english vocab term 9"
-            android:inputType="textPersonName" />
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-        <EditText
-            android:id="@+id/vocab10"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="english vocab term 10"
-            android:inputType="textPersonName" />
+                <EditText
+                    android:id="@+id/vocab3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="english vocab term 3"
+                    android:inputType="textPersonName" />
+
+                <Button
+                    android:id="@+id/ok3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ok" />
+            </TableRow>
+
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <EditText
+                    android:id="@+id/vocab4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="english vocab term 4"
+                    android:inputType="textPersonName" />
+
+                <Button
+                    android:id="@+id/ok4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ok" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <EditText
+                    android:id="@+id/vocab5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="english vocab term 5"
+                    android:inputType="textPersonName" />
+
+                <Button
+                    android:id="@+id/ok5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ok" />
+            </TableRow>
+
+        </TableLayout>
 
         <Button
             android:id="@+id/Continue"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Continue" />
+            android:layout_height="match_parent"
+            android:text="@string/next" />
+
 
     </LinearLayout>
 
