@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <CheckBox
+        android:id="@+id/English"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="bottom"
+        android:paddingTop="300dp"
+        android:text="English" />
+
+    <CheckBox
+        android:id="@+id/Characters"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Characters" />
+
+    <CheckBox
+        android:id="@+id/Pinyin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Pinyin" />
+
+    <Button
+        android:id="@+id/Start"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Start" />
+</LinearLayout>
