@@ -5,10 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
+//import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
+//import android.widget.Spinner;
 
 public class MainActivity extends AppCompatActivity {
     private String[] englishArray;
@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         EditText vocab1 = findViewById(R.id.vocab1);
+        englishArray = new String[5];
 
         Button ok1 = findViewById(R.id.ok1);
         ok1.setOnClickListener(new View.OnClickListener() {
@@ -82,8 +83,8 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra("englishArray", englishArray);
 
         // continue button setup
-        final Button Next = findViewById(R.id.Next);
-        Next.setOnClickListener(unused -> startActivity(intent));
+        final Button Continue = findViewById(R.id.Continue);
+        Continue.setOnClickListener(unused -> startActivity(intent));
 
 
     }

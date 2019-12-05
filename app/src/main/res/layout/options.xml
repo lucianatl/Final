@@ -33,12 +33,6 @@
                 android:layout_height="wrap_content"
                 android:text="Characters" />
 
-            <RadioButton
-                android:id="@+id/PinyinSide1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Pinyin" />
-
         </RadioGroup>
     </LinearLayout>
 
@@ -71,11 +65,6 @@
                 android:layout_height="wrap_content"
                 android:text="Characters" />
 
-            <RadioButton
-                android:id="@+id/PinyinSide2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Pinyin" />
         </RadioGroup>
     </LinearLayout>
 

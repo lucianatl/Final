@@ -16,7 +16,7 @@ public class Flashcards extends AppCompatActivity {
     private String[] side2Array;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
+        super.onCreate(savedInstanceState);
 
         //setContentView(R.layout.activity_main);
         Intent received = getIntent();
@@ -35,10 +35,6 @@ public class Flashcards extends AppCompatActivity {
             side1Array = received.getStringArrayExtra("englishArray");
             Flashcard.setText(side1Array[index]);
             side = 0;
-        } else if (side1.equals("Pinyin")) {
-            side1Array = received.getStringArrayExtra("pinyinArray");
-            Flashcard.setText(side1Array[index]);
-            side = 0;
         } else {
             side1Array = received.getStringArrayExtra("charactersArray");
             Flashcard.setText(side1Array[index]);
@@ -47,8 +43,6 @@ public class Flashcards extends AppCompatActivity {
 
         if (side2.equals("English")) {
             side2Array = received.getStringArrayExtra("englishArray");
-        } else if (side2.equals("Pinyin")) {
-            side2Array = received.getStringArrayExtra("pinyinArray");
         } else {
             side2Array = received.getStringArrayExtra("charactersArray");
         }
@@ -67,29 +61,27 @@ public class Flashcards extends AppCompatActivity {
 
             }
         });
-        Previous.setOnClickListener(new View.OnClickListener() {
+        Previous.setOnClickListener(unused -> new View.OnClickListener() {
             public void onClick(View v) {
                 index--;
-                if (index == -1) {
+                if (index <= -1) {
                     index = side1Array.length - 1;
                 }
                 Flashcard.setText(side1Array[index]);
                 side = 0;
             }
         });
-        Next.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                index++;
-                index = index % side1Array.length;
-                Flashcard.setText(side1Array[index]);
-                side = 0;
+        Next.setOnClickListener((View v) -> {
+            index++;
+            if (index >= 5) {
+                index = 0;
             }
+            Flashcard.setText(side1Array[index]);
+            side = 0;
         });
-        menu.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                startActivity(intent);
-            }
-        });
+
+        menu.setOnClickListener(unused -> startActivity(intent));
+
 
     }
 }
