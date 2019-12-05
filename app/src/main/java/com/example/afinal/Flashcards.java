@@ -17,6 +17,7 @@ public class Flashcards extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.flashcards);
 
         //setContentView(R.layout.activity_main);
         Intent received = getIntent();

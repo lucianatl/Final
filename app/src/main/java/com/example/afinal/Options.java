@@ -2,6 +2,7 @@ package com.example.afinal;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -21,6 +22,8 @@ import androidx.appcompat.app.AppCompatActivity;
 //import com.google.api.services.translate.v3beta1.model.TranslateTextResponse;
 //import com.google.api.services.translate.v3beta1.model.Translation;
 
+import org.apache.commons.lang3.ObjectUtils;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -38,6 +41,7 @@ public class Options extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.options);
 
         addListenerOnButton();
 
@@ -101,7 +105,7 @@ public class Options extends AppCompatActivity {
             //public void onClick(View v) {
             // get selected radio button from radioGroup
 
-            int selectedId = side1Options.getCheckedRadioButtonId();
+            int selectedId = side1Options.getCheckedRadioButtonId(); // could be these
             int selectedId2 = side2Options.getCheckedRadioButtonId();
 
             if (selectedId == R.id.CharactersSide1) {
@@ -116,7 +120,9 @@ public class Options extends AppCompatActivity {
                             charactersArray[i] = charactersArray[i] + translation.getTranslatedText();
                         }
                     } catch (IOException e) {
-
+                        Log.e("null", "io");
+                    } catch (NullPointerException e) {
+                        Log.e("null", "yes");
                     }
 
                     i++;
@@ -146,8 +152,11 @@ public class Options extends AppCompatActivity {
                             charactersArray[i] = charactersArray[i] + translation.getTranslatedText();
                         }
                     } catch (IOException e) {
-
+                        Log.e("null", "io");
+                    } catch (NullPointerException e) {
+                        Log.e("null", "null");
                     }
+
 
                     i++;
                 }
@@ -155,7 +164,7 @@ public class Options extends AppCompatActivity {
 
                 //set side1 intent to Characters
 
-                intent.putExtra("side1", c);
+                intent.putExtra("side2", c);
             }
 
             if (selectedId2 == R.id.EnglishSide2) {
