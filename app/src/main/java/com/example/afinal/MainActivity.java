@@ -13,6 +13,7 @@ import android.widget.Spinner;
 public class MainActivity extends AppCompatActivity {
     private String[] englishArray;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
