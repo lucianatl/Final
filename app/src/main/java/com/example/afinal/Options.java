@@ -50,6 +50,8 @@ public class Options extends AppCompatActivity {
     private static String[] charactersArray;
     final private String projectId =  "final-261121";
     final private String location = "global";
+    public static final MediaType MEDIA_TYPE_MARKDOWN
+            = MediaType.parse("text/x-markdown; charset=utf-8");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,9 +109,9 @@ public class Options extends AppCompatActivity {
         OkHttpClient client = new OkHttpClient();
 
         String url = "https://yodish.p.rapidapi.com/yoda.json?text=Master%20Obiwan%20has%20lost%20a%20planet.";
-        RequestBody body = RequestBody.create(toPost, MediaType.parse(toPost));
+        RequestBody body = RequestBody.create(toPost, MEDIA_TYPE_MARKDOWN);
 
-
+        //MediaType.parse(toPost)
         Request request = new Request.Builder()
                 .url(url)
                 .post(body)
