@@ -9,11 +9,11 @@ import android.widget.CheckBox;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
-import com.google.cloud.translate.v3.LocationName;
+/*import com.google.cloud.translate.v3.LocationName;
 import com.google.cloud.translate.v3.TranslateTextRequest;
 import com.google.cloud.translate.v3.TranslateTextResponse;
 import com.google.cloud.translate.v3.Translation;
-import com.google.cloud.translate.v3.TranslationServiceClient;
+import com.google.cloud.translate.v3.TranslationServiceClient;*/
 
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,12 +22,25 @@ import androidx.appcompat.app.AppCompatActivity;
 //import com.google.api.services.translate.v3beta1.model.TranslateTextResponse;
 //import com.google.api.services.translate.v3beta1.model.Translation;
 
-import org.apache.commons.lang3.ObjectUtils;
+/*import org.apache.commons.lang3.ObjectUtils;*/
+
+import com.google.gson.Gson;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
+import okhttp3.ResponseBody;
 
 public class Options extends AppCompatActivity {
     final private String c = "Characters";
@@ -64,7 +77,7 @@ public class Options extends AppCompatActivity {
 
     }*/
     // Translating Text
-    public static List<Translation> translateText(
+    /*public static List<Translation> translateText(
             String projectId, String location, String targetLanguage, String text) throws IOException {
 
         // Initialize client that will be used to send requests. This client only needs to be created
@@ -86,9 +99,48 @@ public class Options extends AppCompatActivity {
             // Display the translation for each input text provided
             /*for (Translation translation : response.getTranslationsList()) {
                 System.out.printf("Translated text: %s\n", translation.getTranslatedText());
-            }*/
+            }
         }
+    }*/
+
+    public String callInternet(String toPost) {
+        OkHttpClient client = new OkHttpClient();
+
+        String url = "https://yodish.p.rapidapi.com/yoda.json?text=Master%20Obiwan%20has%20lost%20a%20planet.";
+        RequestBody body = RequestBody.create(toPost, MediaType.parse(toPost));
+
+
+        Request request = new Request.Builder()
+                .url(url)
+                .post(body)
+                .addHeader("x-rapidapi-host", "yodish.p.rapidapi.com")
+                .addHeader("x-rapidapi-key", "aaf97f5dd8msh99c18088dd918e7p1f88cdjsnac081b3886d1")
+                .addHeader("content-type", "application/x-www-form-urlencoded")
+                .build();
+
+        try {
+            Response response = client.newCall(request).execute();
+            ResponseBody myResponse = response.body();
+            Gson gson = new Gson();
+            String jsonData = myResponse.string();
+            try {
+                JSONObject Jobject = new JSONObject(jsonData);
+                String translated = Jobject.getString("Yodish");
+                return translated;
+                //JsonArray allGames = result.get("games").getAsJsonArray();
+            } catch (JSONException j) {
+                Log.e("json", "json wack");
+                j.printStackTrace();
+            }
+
+        } catch (IOException e) {
+
+            e.printStackTrace();
+        }
+        return new String();
     }
+
+
 
     public void addListenerOnButton(){
 
@@ -114,13 +166,8 @@ public class Options extends AppCompatActivity {
                 charactersArray = new String[]{"", "", "", "", ""};
                 for (String text : englishArray) {
                     try {
-                        List<Translation> charactersList = translateText(
-                                projectId, location, "zh", text);
-                        for (Translation translation : charactersList) {
-                            charactersArray[i] = charactersArray[i] + translation.getTranslatedText();
-                        }
-                    } catch (IOException e) {
-                        Log.e("null", "io");
+                        charactersArray[i] = callInternet(text);
+
                     } catch (NullPointerException e) {
                         Log.e("null", "yes");
                     }
@@ -146,17 +193,11 @@ public class Options extends AppCompatActivity {
                 charactersArray = new String[]{"", "", "", "", ""};
                 for (String text : englishArray) {
                     try {
-                        List<Translation> charactersList = translateText(
-                                projectId, location, "zh", text);
-                        for (Translation translation : charactersList) {
-                            charactersArray[i] = charactersArray[i] + translation.getTranslatedText();
-                        }
-                    } catch (IOException e) {
-                        Log.e("null", "io");
-                    } catch (NullPointerException e) {
-                        Log.e("null", "null");
-                    }
+                        charactersArray[i] = callInternet(text);
 
+                    } catch (NullPointerException e) {
+                        Log.e("null", "yes");
+                    }
 
                     i++;
                 }
