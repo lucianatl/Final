@@ -106,10 +106,19 @@ public class Options extends AppCompatActivity {
     }*/
 
     public String callInternet(String toPost) {
+        if (toPost == null) {
+            return "toPost is null";
+        }
         OkHttpClient client = new OkHttpClient();
 
         String url = "https://yodish.p.rapidapi.com/yoda.json?text=Master%20Obiwan%20has%20lost%20a%20planet.";
+        if (toPost == null) {
+            Log.e("null", "toPost is null");
+        } else {
+            Log.i("works", "toPost isn't null");
+        }
         RequestBody body = RequestBody.create(toPost, MEDIA_TYPE_MARKDOWN);
+
 
         //MediaType.parse(toPost)
         Request request = new Request.Builder()
@@ -139,7 +148,8 @@ public class Options extends AppCompatActivity {
 
             e.printStackTrace();
         }
-        return new String();
+        String failed = "didn't work?";
+        return failed;
     }
 
 
