@@ -35,6 +35,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import okhttp3.Call;
+import okhttp3.Callback;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -52,6 +54,8 @@ public class Options extends AppCompatActivity {
     final private String location = "global";
     public static final MediaType MEDIA_TYPE_MARKDOWN
             = MediaType.parse("text/x-markdown; charset=utf-8");
+    private final String url = "https://yodish.p.rapidapi.com/yoda.json?text=Master%20Obiwan%20has%20lost%20a%20planet.";
+    private String theTrans = "nothing";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,11 +111,11 @@ public class Options extends AppCompatActivity {
 
     public String callInternet(String toPost) {
         if (toPost == null) {
-            return "toPost is null";
+            theTrans = "toPost is null";
         }
         OkHttpClient client = new OkHttpClient();
 
-        String url = "https://yodish.p.rapidapi.com/yoda.json?text=Master%20Obiwan%20has%20lost%20a%20planet.";
+
         if (toPost == null) {
             Log.e("null", "toPost is null");
         } else {
@@ -151,6 +155,68 @@ public class Options extends AppCompatActivity {
         String failed = "didn't work?";
         return failed;
     }
+    /*public void callIntwCallback(String toPost) {
+        OkHttpClient client = new OkHttpClient();
+
+        Call post(String url, String MEDIA_TYPE_MARKDOWN, Callback callback) {
+            RequestBody body = RequestBody.create(JSON, json);
+            Request request = new Request.Builder()
+                    .url(url)
+                    .post(body)
+                    .build();
+            Call call = client.newCall(request);
+            call.enqueue(callback);
+            return call;
+        }
+    }*/
+
+    public void run(String toPost) throws IOException {
+
+        OkHttpClient client = new OkHttpClient();
+
+        RequestBody body = RequestBody.create(toPost, MEDIA_TYPE_MARKDOWN);
+
+        Request request = new Request.Builder()
+                .url(url)
+                .post(body)
+                .addHeader("x-rapidapi-host", "yodish.p.rapidapi.com")
+                .addHeader("x-rapidapi-key", "aaf97f5dd8msh99c18088dd918e7p1f88cdjsnac081b3886d1")
+                .addHeader("content-type", "application/x-www-form-urlencoded")
+                .build();
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                call.cancel();
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+
+                final String myResponse = response.body().string();
+
+                Options.this.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        //ResponseBody myResponse = response.body();
+                        //Gson gson = new Gson();
+                        String jsonData = myResponse;
+                        try {
+                            JSONObject Jobject = new JSONObject(jsonData);
+                            String translated = Jobject.getString("Yodish");
+                            theTrans = translated;
+                            //JsonArray allGames = result.get("games").getAsJsonArray();
+                        } catch (JSONException j) {
+                            Log.e("json", "json wack");
+                            j.printStackTrace();
+                        }
+                    }
+                });
+
+            }
+        });
+    }
+
 
 
 
@@ -178,11 +244,15 @@ public class Options extends AppCompatActivity {
                 charactersArray = new String[]{"", "", "", "", ""};
                 for (String text : englishArray) {
                     try {
-                        charactersArray[i] = callInternet(text);
+                        run(text);
+                        charactersArray[i] = theTrans;
 
                     } catch (NullPointerException e) {
                         Log.e("null", "yes");
+                    } catch (IOException e) {
+                        Log.e("oi", "io");
                     }
+
 
                     i++;
                 }
@@ -205,10 +275,13 @@ public class Options extends AppCompatActivity {
                 charactersArray = new String[]{"", "", "", "", ""};
                 for (String text : englishArray) {
                     try {
-                        charactersArray[i] = callInternet(text);
+                        run(text);
+                        charactersArray[i] = theTrans;
 
                     } catch (NullPointerException e) {
                         Log.e("null", "yes");
+                    } catch (IOException e) {
+                        Log.e("io", "io");
                     }
 
                     i++;
